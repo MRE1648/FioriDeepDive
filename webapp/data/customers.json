@@ -1,0 +1,57 @@
+{
+	"customers": [{
+		"customerid": "123654",
+		"firstname": "Marcus",
+		"lastname": "Reimann",
+		"title": "",
+		"gender": "männlich",
+		"email": "mre@sap.com",
+		"phone": "+49 160 222555444",
+		"website": "sap.com"
+	}, {
+		"customerid": "123655",
+		"firstname": "Marion",
+		"lastname": "Dingsbums",
+		"title": "",
+		"gender": "weiblich",
+		"email": "mdb@sap.com",
+		"phone": "+49 160 222555455",
+		"website": "sap.com"
+	}, {
+		"customerid": "123656",
+		"firstname": "Klara",
+		"lastname": "Baumann",
+		"title": "Dr.",
+		"gender": "weiblich",
+		"email": "dkb@sap.com",
+		"phone": "+49 160 222566444",
+		"website": "sap.com"
+	}, {
+		"customerid": "1000001",
+		"firstname": "Max",
+		"lastname": "Mustermann",
+		"title": "DR.",
+		"gender": "männlich",
+		"email": "max.mustermann@mail.com",
+		"phone": "0611/11 11 111",
+		"website": "www.max-mustermann.com"
+	}, {
+		"customerid": "1000002",
+		"firstname": "John",
+		"lastname": "Doe",
+		"title": "",
+		"gender": "männlich",
+		"email": "john.doe@mail.com",
+		"phone": "0622/12 22 121",
+		"website": "www.john-doe.com"
+	}, {
+		"customerid": "1000003",
+		"firstname": "Marie",
+		"lastname": "Musterfrau",
+		"title": "MSc",
+		"gender": "weiblich",
+		"email": "mmuster@mail.com",
+		"phone": "0633/33 31 313",
+		"website": "www.mmuster.com"
+	}]
+}

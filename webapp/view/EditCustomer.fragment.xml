@@ -1,0 +1,28 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form" xmlns:core="sap.ui.core">
+	<f:SimpleForm id="edit_simpleform" editable="true" title="{i18n>title}" layout="ResponsiveGridLayout" labelSpanXL="3" labelSpanL="3"
+		labelSpanM="3" labelSpanS="12" adjustLabelSpan="false" emptySpanXL="4" emptySpanL="4" emptySpanM="4" emptySpanS="0" columnsXL="1"
+		columnsL="1" columnsM="1" singleContainerFullSize="false">
+		<f:content>
+			<Label id="edit_label_customerid" text="{i18n>App.customerid}" labelFor="edit_text_customerid"/>
+			<Input id="edit_text_customerid" value="{CustomerId}"/>
+			<Label id="edit_label_firstname" text="{i18n>App.firstname}" labelFor="edit_text_firstname"/>
+			<Input id="edit_text_firstname" value="{Firstname}"/>
+			<Label id="edit_label_lastname" text="{i18n>App.lastname}" labelFor="edit_text_lastname"/>
+			<Input id="edit_text_lastname" value="{Lastname}"/>
+			<Label id="edit_label_title" text="{i18n>App.title}" labelFor="edit_text_title"/>
+			<Input id="edit_text_title" value="{AcademicTitle}"/>
+			<Label id="edit_label_gender" text="{i18n>App.gender}" labelFor="edit_text_gender"/>
+			<Select id="edit_select_gender" items="{genderModel>/genders}" selectedKey="{Gender}">
+				<items>
+					<core:Item key="{genderModel>}" text="{path: 'genderModel>', formatter: '.formatter.genderFormatter'}"/>
+				</items>
+			</Select>
+			<Label id="edit_label_email" text="{i18n>App.email}" labelFor="edit_text_email"/>
+			<Input id="edit_text_email" value="{Email}"/>
+			<Label id="edit_label_phone" text="{i18n>App.phone}" labelFor="edit_text_phone"/>
+			<Input id="edit_text_phone" value="{Phone}"/>
+			<Label id="edit_label_website" text="{i18n>App.homepage}" labelFor="edit_text_website"/>
+			<Input id="edit_text_website" value="{Website}"/>
+		</f:content>
+	</f:SimpleForm>
+</core:FragmentDefinition>

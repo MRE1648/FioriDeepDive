@@ -28,6 +28,25 @@ sap.ui.define([
 			if (sCustomerId !== "create") {
 				this._sMode = "display";
 				this._showCustomerFragment("DisplayCustomer");
+				//
+				this.getView().bindElement({
+					path: "/CustomerSet(guid" + sCustomerId + "')",
+					events: {
+						dataRequested: function () {
+							this.logInfo("Customer" + sCustomerId + " was requested");
+							this.getView().setBusy(true);
+						}.bind(this),
+						dataReceived: function (oData) {
+							if (oData.getParameter("data")) {
+								this.logInfo("Customer" + sCustomerId + " was received");
+							} else {
+								this.logError("Customer" + sCustomerId + " was not found");
+							}
+							this.getView().setBusy(false);
+						}.bind(this)
+					} //Events
+				});
+				//
 				this.getView().bindElement("/CustomerSet(guid'" + sCustomerId + "')");
 				this.logInfo("Display Customer");
 			} else {
@@ -54,6 +73,7 @@ sap.ui.define([
 		},
 
 		onSavePress: function (oEvent) {
+			this.getView().setBusy(true);
 			if (this._sMode === "create") {
 				let oModel = this.getView().getModel(),
 					oCreateData = this.getView().getModel("createModel").getData();
@@ -63,6 +83,7 @@ sap.ui.define([
 						MessageBox.information(this.geti18nText("dialog.create.success"), {
 							onClose: function (sAction) {
 								this.onNavBack();
+								this.getView().setBusy(false);
 							}.bind(this)
 
 						});
@@ -72,6 +93,7 @@ sap.ui.define([
 							onClose: function (sAction) {
 								this.onNavBack();
 								this.logError("Customer creation failed");
+								this.getView().setBusy(false);
 							}.bind(this)
 						});
 					}
@@ -79,10 +101,21 @@ sap.ui.define([
 				});
 			} else {
 				if (this.getModel().hasPendingChanges()) {
-					this.getModel().submitChanges();
-					MessageBox.information(this.geti18nText("dialog.update.success"));
-					this.logError("Customer saved");
+					this.getModel().submitChanges({
+						success: function (oData) {
+							MessageBox.information(this.geti18nText("dialog.update.success"));
+							this.logInfo("Customer saved");
+							this.getView().setBusy(false);
+						}.bind(this),
+						error: function (oError) {
+							MessageBox.information(this.geti18nText("dialog.update.error"));
+							this.logError("Customer saved");
+							this.getView().setBusy(false);
+						}.bind(this)
+					});
 
+				} else {
+					this.getView().setBusy(false);
 				}
 				this._toggleEdit(false);
 

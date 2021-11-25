@@ -10,3 +10,4 @@ mock_preview_sapui5.html
 .*/mock_preview_sapui5.html
 APIExternalProducer.js
 .*/APIExternalProducer.js
+/dist/

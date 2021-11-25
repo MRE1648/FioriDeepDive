@@ -17,6 +17,15 @@ sap.ui.define([
 			this.getView().addStyleClass(this._getContentDensityClass());
 		},
 
+		setDirtyState: function (bState) {
+			if (sap.ushell) {
+				sap.ushell.Container.setDirtyFlag(bState);
+
+			} else {
+				this.logWarning("Can't set Dirty Flag: not in Launchpad mode");
+			}
+		},
+
 		_getContentDensityClass: function () {
 			if (!this._sContentDensityClass) {
 				if (!sap.ui.Device.support.touch) {

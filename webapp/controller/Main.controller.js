@@ -40,14 +40,17 @@ sap.ui.define([
 			MessageBox.confirm(this.geti18nText("dialog.delete"), {
 				onClose: function (oAction) {
 					if (oAction === MessageBox.Action.OK) {
+						this.getView().setBusy(true);
 						oModel.remove(sCustomerPath, {
 							success: function (oData, response) {
 								MessageBox.success(this.geti18nText("dialog.delete.success"));
 								this.logInfo("Delete successful for " + sCustomerPath);
+								this.getView().setBusy(false);
 							}.bind(this),
 							error: function (oError) {
 								MessageBox.error(oError.message);
 								this.logError("Delete not successful for " + sCustomerPath);
+								this.getView().setBusy(false);
 							}.bind(this)
 						});
 					}
